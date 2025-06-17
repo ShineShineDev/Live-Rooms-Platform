@@ -13,7 +13,7 @@
 - **Nuxt** :  For Frontend
 - **Laravel**:  For API Gateway & Backend Services
 - **Postgresql** :  For Database
-- **Redis ** :  For Caching
+- **Redis** :  For Caching
 - **RabbitMQ** :  For Message broker
 - **Websocket** :  For Real-time communication 
 
@@ -21,21 +21,38 @@
 
 
 
-##### Pull Docker Image (Easiest way to Run App)
+#### Run Apps With Docker ( Easiest way to Run App )
 
-```
-docker pull spideyshine/
-```
+> Important: Port Usage  
+>
+> This project uses ports **8000, 8001, 8002, 4000, 3000, 5432 ,6379, 5672, 3000**. Ensure these ports are free on your system to avoid conflicts and allow the application to run correctly.
 
+- Clone Project Repo
 
+  ```bash
+  $ git clone https://github.com/ShineShineDev/Live-Rooms-Platform.git
+  $ cd Live-Rooms-Platform
+  ```
 
-##### Run
+- Checkout `docker_ready` Branch.
 
-```
-sudo docker run -d -p 7912:80 spideyshine/apache-webserver-with-bootstarp-template
-```
+  >  `docker_ready` branch is configured with all the necessary files to run the application using Docker)
 
+  ```bash
+   $ git checkout docker_ready 
+  ```
 
+- Build Docker images
+
+  > Run `docker-compose up --build` to build your Docker images and start all defined services for the Live Rooms Platform application.
+
+  ```bash
+  $ docker-compose up --build
+  ```
+
+- Browse => http://localhost:3000/ 
+
+  
 
 ---
 
@@ -72,8 +89,6 @@ DB_PASSWORD=postgres							# credentials
 ```
 
 > 💡 Adjust these values as needed to match your PostgreSQL setup.
->
-> https://www.postgresql.org/download/
 
 
 
@@ -87,8 +102,6 @@ RABBITMQ_PASSWORD=guest    # password
 ````
 
 > ⚙️ You can modify these values as needed to match your RabbitMQ environment.
->
-> https://www.rabbitmq.com/tutorials
 
 
 
@@ -105,11 +118,24 @@ REDIS_CLIENT=predis
 
 
 
-##### Clone Project Repo
 
-```cmd
-git clone https://github.com/ShineShineDev/Live-Rooms-Platform.git
-```
+
+- Clone Project Repo
+
+  ```bash
+  $ git clone https://github.com/ShineShineDev/Live-Rooms-Platform.git
+  $ cd Live-Rooms-Platform
+  ```
+
+- Checkout `main` Branch.
+
+  >  To manually run the application, switch to the `main` branch. This branch contains all the necessary configurations and files for a direct, non-Docker setup.
+
+  ```bash
+  $ git checkout main
+  ```
+
+
 
 
 
@@ -235,14 +261,13 @@ git clone https://github.com/ShineShineDev/Live-Rooms-Platform.git
 
 Browse on => http://localhost:3000/
 
-##### 
-
 
 
 
 
 :warning: Please let me know if you have any questions or errors
 
- -	 09 7877 966 98
+ -	 +959 7877 966 98
+ -	 https://portfolio-omega-plum-62.vercel.app/
  -	 aungshine194@gmail.com
 
