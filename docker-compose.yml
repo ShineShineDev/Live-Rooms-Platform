@@ -1,0 +1,114 @@
+version: '3.9'
+
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - live-room-service
+      - subscription-service
+      - websocket-service
+      - postgres
+      - redis
+      - rabbitmq
+    environment:
+      LIVE_ROOM_SERVICE: http://live-room-service:8001
+      SUBSCRIPTION_SERVICE: http://subscription-service:8002
+      WEBSOCKET_SERVICE: http://websocket-service:4000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: live-rooms-platform
+      DB_USERNAME: spidey
+      DB_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    networks:
+      - backend
+
+  live-room-service:
+    build:
+      context: ./live-room-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
+    networks:
+      - backend
+
+  subscription-service:
+    build:
+      context: ./subscription-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
+    networks:
+      - backend
+
+  websocket-service:
+    build:
+      context: ./websocket-server
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
+    networks:
+      - backend
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: live-rooms-platform
+      POSTGRES_USER: spidey
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - backend
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://api-gateway:8000
+    depends_on:
+      - api-gateway
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:

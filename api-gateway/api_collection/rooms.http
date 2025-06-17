@@ -1,0 +1,29 @@
+@hostname = http://localhost:8080/
+@contentType = application/json
+
+# get rooms list
+GET  {{hostname}}api/gateway/pub/live_room_service/rooms
+Content-Type: {{contentType}}
+
+
+# get rooms detail 
+GET  {{hostname}}api/gateway/pub/live_room_service/rooms/1
+Content-Type: {{contentType}}
+
+
+# store rooms
+POST  {{hostname}}api/gateway/live_room_service/rooms
+Content-Type: {{contentType}}
+
+{
+  "title": "Team C vs Team D",
+  "image_url": "https://placehold.co/600x400/FFD700/000000?text=Match+Image+2",
+  "category": "sports",
+  "date": "2013-06-18",
+  "time": "19:00",
+  "team_a": "TEAM A",
+  "team_b": "TEAM C",
+  "commentator": "BLV NONAME",
+  "is_live": false,
+  "is_hot": true
+}

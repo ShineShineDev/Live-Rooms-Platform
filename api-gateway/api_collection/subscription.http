@@ -1,0 +1,23 @@
+@hostname = http://127.0.0.1:8000/
+@contentType = application/json
+@token=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTQxNGNjZWE3ZTA1ODI1NzE5MWFlY2NlZjAzMTIwNTNiNWY5MzQ4MTM1NWUyMTBmZjZkYmM3MzQ4NjY1Zjk4YWYxMmEyZjJkOWNhMTI5OWEiLCJpYXQiOjE3NDk5MTgxMzYuMDM4NjU2LCJuYmYiOjE3NDk5MTgxMzYuMDM4NjU4LCJleHAiOjE3ODE0NTQxMzYuMDM0OTkzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.g7MfOnWzIdpe2cG-8g6FlOcyDBAgWl74iYj5PFoEEQsZ5zdxyYHbNxnmS0PFz39tofhl8vhw4dutDDyENC5NsDVHaMim4rGRUUYJMjM_H70Bs4qQUFdesoPwcXdcjvEPObg6l8mMdTbQfbEhI1UOkAM9foeJGBgXv_qiZlruhZIyXv-QW5egoLknQDZ3x2awW1Vt_9ucs8b-UwlA-8XDUJ-ix7s_QWxNcvO9gO9O_LfldJC40-KrecA-e0LjWyvz1oF5RWPc5LbM4krkL_r71th4KzTf0qVLmUWCA3BHLjf9dYi68CfzZOCKMr8NL33YPFB_gTA4YV9xabKdpMehliVheCGoPt9QJqZJnBbMKdPtdK930WRHngFR5UtFdDnxQ3QYOBwZ1dYv2w0V7G1YhXEJcJnurY8P3Zn_gQ79F3ii9eZGtnSE0st29Hgz9d5Lc7PsIquiPE4u66asCAGkmy-RWnVvkGlrbQTPk-3myYi-y57ds_hJpH4jeuQuBT0qKLk9-B4-utSU-lidKXR8vwSnkcDiRgYAsr9LCtsihm32rR1kUNzRLj_DQuLMuskqXtSE0VQEPbL93NhGaYJRyRIUmcP_aHNkcy5wIeuKaZb5u_SyTNjAJhc5-wwkN4j1FZ6ZRHdT9MpYzHjXHBx2vx9TtqmMo8GNbSCtz2596yM
+
+# susubscribe
+POST  {{hostname}}api/gateway/subscription_service/subscribe
+Content-Type: {{contentType}}
+Authorization:  {{token}}
+
+{
+  "user_id": 1,
+  "room_id": 2
+}
+
+
+GET  {{hostname}}api/gateway/subscription_service/subscribe/list
+Content-Type: {{contentType}}
+Authorization:  {{token}}
+
+{
+  "user_id": 1
+}
+
