@@ -49,11 +49,17 @@ class SubscriptionController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $event = SubscriptionList::where("user_id", $request->user_id)->get();
+        $events = SubscriptionList::with('room')
+            ->where('user_id', $request->user_id)
+            ->get()
+            ->groupBy(function ($item) {
+                return $item->room->category ?? 'Unknown';
+            });
+
         return response()->json([
             "service" => "subscription",
             "event" => "subscribed",
-            "data" => $event
+            "data" => $events
         ], 201);
     }
 

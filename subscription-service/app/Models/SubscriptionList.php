@@ -15,4 +15,9 @@ class SubscriptionList extends Model
 
     protected $casts = [
     ];
+
+     public function room()
+    {
+        return $this->belongsTo(Rooms::class);
+    }
 }

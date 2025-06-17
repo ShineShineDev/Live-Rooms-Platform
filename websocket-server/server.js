@@ -17,23 +17,17 @@ let io = socket(server);
 
 io.on("connection", (socket) => {
     console.log("New client connected");
-
-    // Listen for a join event and add to room
     socket.on("join", (userId) => {
         const room = `user_${userId}`;
         socket.join(room);
         console.log(`User ${userId} joined room: ${room}`);
     });
-
-    // Listen for manual chat messages (optional)
     socket.on("chat", (data) => {
         io.sockets.emit("chat", data); // broadcasts to all
     });
-
     socket.on("typing", (name) => {
         socket.broadcast.emit("typing", name);
     });
-
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     });
@@ -42,7 +36,7 @@ io.on("connection", (socket) => {
 async function connectRabbitMQWithRetry(retryInterval = 5000) {
     while (true) {
         try {
-            const RABBITMQ_URL = "amqp://guest:guest@rabbitmq:5672";
+            const RABBITMQ_URL = "amqp://guest:guest@localhost:5672";
             const EXCHANGE_NAME = "data_bridge";
 
             const connection = await amqp.connect(RABBITMQ_URL);
@@ -69,8 +63,6 @@ async function connectRabbitMQWithRetry(retryInterval = 5000) {
                     }
                 }
             }, { noAck: true });
-
-            // Handle graceful reconnect on connection close
             connection.on("close", () => {
                 console.error("RabbitMQ connection closed, retrying...");
                 setTimeout(() => connectRabbitMQWithRetry(retryInterval), retryInterval);
@@ -80,7 +72,7 @@ async function connectRabbitMQWithRetry(retryInterval = 5000) {
                 console.error("RabbitMQ connection error:", err.message);
             });
 
-            break; // stop retrying if connected successfully
+            break; 
         } catch (err) {
             console.error("RabbitMQ connection failed:", err.message);
             console.log(`Retrying in ${retryInterval / 1000} seconds...`);

@@ -3,10 +3,10 @@
     <div class="flex items-center space-x-4">
         <template v-if="authUser">
             <div class="flex items-center space-x-4">
-                <span class="text-sm hidden sm:block"> {{ authUser.first_name }} {{ authUser.last_name
+                <span class="text-sm hidden sm:block text-gray-900 "> {{ authUser.first_name }} {{ authUser.last_name
                     }}</span>
                 <NuxtLink to="/deposit">
-                    <div class="bg-black text-yellow-400  rounded-full flex items-center space-x-2 px-2 shadow-inner">
+                    <div class="bg-black cursor-pointer text-yellow-400  rounded-full flex items-center space-x-2 px-2 shadow-inner">
 
                         <div class="bg-black text-yellow-400 p-1 rounded-full flex items-center space-x-2 shadow-inner">
                             <span class="font-bold">{{ authUser.points ?? 1000 }}</span>
@@ -21,7 +21,7 @@
                 </NuxtLink>
                 <div class="relative">
                     <NuxtLink to="/noti">
-                        <button class="p-2 rounded-full bg-black hover:bg-gray-800 transition-colors duration-300">
+                        <button class="p-2 cursor-pointer rounded-full bg-black hover:bg-gray-800 transition-colors duration-300">
                             <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -43,14 +43,14 @@
                     </button>
                 </NuxtLink>
             </div>
-            <button @click="logout" class=" hover:underline">Logout</button>
+            <button @click="logout"  class="text-gray-900  cursor-pointer hover:underline">Logout</button>
         </template>
         <template v-else>
             <NuxtLink to="/auth/login"
-                class="hover:text-gray-900 hover:underline transition-colors duration-300 rounded-md px-3 py-1">
+                class=" text-gray-900  hover:underline transition-colors duration-300 rounded-md px-3 py-1">
                 Login</NuxtLink>
             <NuxtLink to="/auth/register"
-                class="hover:text-gray-900 hover:underline transition-colors duration-300 rounded-md px-3 py-1">
+                class=" text-gray-900  hover:underline transition-colors duration-300 rounded-md px-3 py-1">
                 Register</NuxtLink>
         </template>
     </div>

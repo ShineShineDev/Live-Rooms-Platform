@@ -3,7 +3,7 @@
     <div
       v-if="visible"
       :class="[
-        'fixed top-6 right-6 z-50 flex items-start gap-3 p-4 rounded-lg shadow-lg max-w-xs w-full text-sm text-white',
+        'fixed top-6 right-6 z-50 flex items-start gap-3 py-4 rounded-lg shadow-lg max-w-xs w-full text-sm text-white',
         toastType.bg
       ]"
       role="alert"
@@ -30,7 +30,7 @@ export default {
       visible: false,
       title: '',
       message: '',
-      timeout: 3000,
+      timeout: 5000,
       type: 'info',
       toastType: {
         icon: 'i-heroicons-information-circle',

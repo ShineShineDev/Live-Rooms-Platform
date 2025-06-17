@@ -34,7 +34,7 @@ export default {
     this.socket.on('room_subscribed', (data) => {
       this.$refs.toast.show({
         type: 'info',
-        title: 'Message',
+        title: 'Message From Websocket',
         message: JSON.stringify(data),
         timeout: 3000
       })
