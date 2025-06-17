@@ -1,11 +1,19 @@
-#### Overview 
+#### Overview Diagram
+
+![](https://raw.githubusercontent.com/ShineShineDev/Live-Rooms-Platform/refs/heads/main/img/system%20architecture%20diagram.png)
+
+- Browse a list of live-stream rooms (sports, gaming, entertainment)
+- Subscribe to events/matches
+- Receive real-time and email notifications when a match goes live
+
+
 
 ### Tech stack 
 
--  **Nuxt** :  For Frontend
-- **Laravle **:  For API Gateway & Backend Services
+- **Nuxt** :  For Frontend
+- **Laravel**:  For API Gateway & Backend Services
 - **Postgresql** :  For Database
-- **Redis  ** :  For Caching
+- **Redis ** :  For Caching
 - **RabbitMQ** :  For Message broker
 - **Websocket** :  For Real-time communication 
 

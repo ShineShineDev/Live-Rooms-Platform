@@ -149,19 +149,10 @@ export default {
             this.selectedFilter = value;
             this.subscribeLoading = true;
             try {
-                const { user } = useAuth();
-                const userId = user.value?.id;
-
-                if (!userId) {
-                    throw new Error("User not authenticated");
-                }
-
                 const response = await httpFetch(`/api/gateway/pub/live_room_service/rooms/filter/option?filter=${this.selectedFilter}`);
-
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
                 const data = await response.json();
                 this.events = data.data;
             } catch (error) {

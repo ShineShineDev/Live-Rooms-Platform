@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
 async function connectRabbitMQWithRetry(retryInterval = 5000) {
     while (true) {
         try {
-            const RABBITMQ_URL = "amqp://guest:guest@localhost:5672";
+            const RABBITMQ_URL = "amqp://guest:guest@rabbitmq:5672";
             const EXCHANGE_NAME = "data_bridge";
 
             const connection = await amqp.connect(RABBITMQ_URL);

@@ -186,3 +186,4 @@
 [2025-06-17 19:49:42] local.INFO: Incoming proxy request {"method":"GET","service":"live_room_service","path":"rooms/filter/option","body":{"filter":"tomorrow"}} 
 [2025-06-17 19:50:06] local.INFO: Incoming proxy request {"method":"GET","service":"subscription_service","path":"subscribe/list","body":{"user_id":"12"}} 
 [2025-06-17 19:50:07] local.INFO: Incoming proxy request {"method":"GET","service":"live_room_service","path":"rooms","body":[]} 
+[2025-06-17 20:03:42] local.INFO: Incoming proxy request {"method":"GET","service":"live_room_service","path":"rooms","body":[]} 
