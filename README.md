@@ -256,7 +256,7 @@ REDIS_CLIENT=predis
 - Run 
 
   ```
-  node server.js 
+ npm run dev
   ```
 
 
